@@ -1,0 +1,27 @@
+{
+  "cabela_ambient": {
+    "subtitle": "sounds.cabela_mayhem.cabela_ambient",
+    "sounds": [
+      "cabela_mayhem:cabela_ambient"
+    ]
+  },
+  "cabela_hurt": {
+    "subtitle": "sounds.cabela_mayhem.cabela_hurt",
+    "sounds": [
+      "cabela_mayhem:cabela_hurt"
+    ]
+  },
+  "cabela_death": {
+    "subtitle": "sounds.cabela_mayhem.cabela_death",
+    "sounds": [
+      "cabela_mayhem:cabela_death"
+    ]
+  },
+  "cabela_cry_ambient": {
+    "subtitle": "sounds.cabela_mayhem.cabela_ambient",
+    "sounds": [
+      "cabela_mayhem:cabela_cry_ambient",
+      "cabela_mayhem:cabela_ambient"
+    ]
+  }
+}

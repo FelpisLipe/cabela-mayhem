@@ -1,7 +1,12 @@
 package com.felpslipe.cabela_mayhem;
 
+import com.felpslipe.cabela_mayhem.entity.ModEntities;
+import com.felpslipe.cabela_mayhem.entity.client.CabelaRenderer;
+import com.felpslipe.cabela_mayhem.item.ModItems;
+import com.felpslipe.cabela_mayhem.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -46,6 +51,19 @@ public class CabelaMayhem {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        // Register ourselves for server and other game events we are interested in.
+        // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
+        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
+        NeoForge.EVENT_BUS.register(this);
+
+
+        ModItems.register(modEventBus);
+        ModSounds.register(modEventBus);
+        ModEntities.register(modEventBus);
+
+        // Register the item to a creative tab
+        modEventBus.addListener(this::addCreative);
+
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -56,6 +74,12 @@ public class CabelaMayhem {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(ModItems.CABELA_SPAWN_EGG);
+        }
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.FRANGO);
+        }
 
     }
 
@@ -69,6 +93,7 @@ public class CabelaMayhem {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
 
         }
     }

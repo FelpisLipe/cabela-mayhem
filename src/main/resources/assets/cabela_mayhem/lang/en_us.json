@@ -1,5 +1,10 @@
 {
-  "itemGroup.cabela_mayhem": "Example Mod Tab",
-  "block.cabela_mayhem.example_block": "Example Block",
-  "item.cabela_mayhem.example_item": "Example Item"
+  "item.cabela_mayhem.frango": "Frango",
+  "item.cabela_mayhem.cabela_spawn_egg": "Cabela Spawn Egg",
+
+  "sounds.cabela_mayhem.cabela_ambient": "Cabela cabela's",
+  "sounds.cabela_mayhem.cabela_hurt": "Cabela hurts",
+  "sounds.cabela_mayhem.cabela_death": "Cabela dies",
+
+  "entity.cabela_mayhem.cabela": "Cabela"
 }
