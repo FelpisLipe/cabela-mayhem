@@ -1,15 +1,21 @@
 package com.felpslipe.cabela_mayhem;
 
+import com.felpslipe.cabela_mayhem.block.ModBlocks;
+import com.felpslipe.cabela_mayhem.block.client.CabelaSkullModel;
+import com.felpslipe.cabela_mayhem.entity.CabelaVariant;
 import com.felpslipe.cabela_mayhem.entity.ModEntities;
 import com.felpslipe.cabela_mayhem.entity.client.CabelaRenderer;
 import com.felpslipe.cabela_mayhem.item.ModItems;
 import com.felpslipe.cabela_mayhem.sound.ModSounds;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,6 +23,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
@@ -28,6 +35,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -58,6 +66,7 @@ public class CabelaMayhem {
 
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
 
@@ -80,6 +89,10 @@ public class CabelaMayhem {
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.FRANGO);
         }
+        if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModItems.CABELA_HEAD);
+            event.accept(ModItems.CABELA_CRY_HEAD);
+        }
 
     }
 
@@ -95,6 +108,24 @@ public class CabelaMayhem {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
 
+            event.enqueueWork(() -> {
+                ImmutableMap.Builder<SkullBlock.Type, ResourceLocation> builder = ImmutableMap.builder();
+                builder.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());
+                builder.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
+                SkullBlockRenderer.SKIN_BY_TYPE.putAll(builder.build());
+            });
+
+        }
+
+        @SubscribeEvent
+        public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(CabelaSkullModel.CABELA_HEAD, CabelaSkullModel::createCabelaHeadLayer);
+        }
+
+        @SubscribeEvent
+        public static void onCreateSkullModel(EntityRenderersEvent.CreateSkullModels event) {
+            event.registerSkullModel(CabelaVariant.NORMAL, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
+            event.registerSkullModel(CabelaVariant.CRY, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
         }
     }
 }

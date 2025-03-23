@@ -29,6 +29,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.FRANGO.get());
         withExistingParent(ModItems.CABELA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        skullItem(ModItems.CABELA_HEAD);
+        skullItem(ModItems.CABELA_CRY_HEAD);
     }
 
 

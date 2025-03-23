@@ -5,6 +5,8 @@
   "sounds.cabela_mayhem.cabela_ambient": "Cabela cabela's",
   "sounds.cabela_mayhem.cabela_hurt": "Cabela hurts",
   "sounds.cabela_mayhem.cabela_death": "Cabela dies",
+  "block.cabela_mayhem.cabela_head": "Cabela Head",
+  "block.cabela_mayhem.cabela_cry_head": "Cabela Cry Head",
 
   "entity.cabela_mayhem.cabela": "Cabela"
 }
