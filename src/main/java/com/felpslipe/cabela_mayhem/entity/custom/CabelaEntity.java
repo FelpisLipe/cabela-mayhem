@@ -67,10 +67,19 @@ public class CabelaEntity extends Animal {
     @Nullable
     @Override
     public  AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-        CabelaVariant variant = Util.getRandom(CabelaVariant.values(), this.random);
+        AgeableMob parent1 = ((CabelaEntity) otherParent);
+        float parent1Health = parent1.getHealth();
+        float parent2Health = this.getHealth();
+        float averageHealth = (parent1Health + parent2Health) / 2.0f;
         CabelaEntity baby = ModEntities.CABELA.get().create(level);
-        baby.setVariant(variant);
-        return baby;
+        if(averageHealth <= 5.0f) {
+            CabelaVariant variant = CabelaVariant.CRY;
+            baby.setVariant(variant);
+            return baby;
+        }
+        else {
+            return baby;
+        }
     }
 
     private void setupAnimationStates() {
@@ -127,7 +136,7 @@ public class CabelaEntity extends Animal {
 
     @Override
     public  SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
-        CabelaVariant variant = Util.getRandom(CabelaVariant.values(), this.random);
+        CabelaVariant variant = CabelaVariant.NORMAL;
         this.setVariant(variant);
 
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
