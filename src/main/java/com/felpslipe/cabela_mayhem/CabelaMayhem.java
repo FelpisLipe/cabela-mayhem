@@ -92,6 +92,7 @@ public class CabelaMayhem {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModItems.CABELA_HEAD);
             event.accept(ModItems.CABELA_CRY_HEAD);
+            event.accept(ModBlocks.CABELA_TROPHY);
         }
 
     }

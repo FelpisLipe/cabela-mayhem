@@ -31,6 +31,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropOther(ModBlocks.CABELA_WALL_HEAD.get(), ModItems.CABELA_HEAD.get());
         dropOther(ModBlocks.CABELA_CRY_HEAD.get(), ModItems.CABELA_CRY_HEAD.get());
         dropOther(ModBlocks.CABELA_CRY_WALL_HEAD.get(), ModItems.CABELA_CRY_HEAD.get());
+        dropSelf(ModBlocks.CABELA_TROPHY.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

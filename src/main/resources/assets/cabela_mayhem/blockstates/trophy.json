@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "cabela_mayhem:block/trophy"
+    },
+    "facing=south": {
+      "model": "cabela_mayhem:block/trophy",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "cabela_mayhem:block/trophy",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "cabela_mayhem:block/trophy",
+      "y": 270
+    }
+  }
+}

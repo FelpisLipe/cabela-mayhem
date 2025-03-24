@@ -3,6 +3,7 @@ package com.felpslipe.cabela_mayhem.block;
 import com.felpslipe.cabela_mayhem.CabelaMayhem;
 import com.felpslipe.cabela_mayhem.block.custom.CabelaSkullBlock;
 import com.felpslipe.cabela_mayhem.block.custom.CabelaWallSkullBlock;
+import com.felpslipe.cabela_mayhem.block.custom.TrophyBlock;
 import com.felpslipe.cabela_mayhem.entity.CabelaVariant;
 import com.felpslipe.cabela_mayhem.item.ModItems;
 import com.google.common.collect.ImmutableSet;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.AbstractSkullBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.PushReaction;
@@ -42,6 +44,13 @@ public class ModBlocks {
     public static final DeferredBlock<CabelaWallSkullBlock> CABELA_CRY_WALL_HEAD = registerSkullBlock("cabela_cry_wall_head",
             () -> new CabelaWallSkullBlock(CabelaVariant.CRY, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
     );
+
+    public static final DeferredBlock<Block> CABELA_TROPHY = registerBlock("cabela_trophy",
+            () -> new TrophyBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .pushReaction(PushReaction.DESTROY)));
 
 
 
