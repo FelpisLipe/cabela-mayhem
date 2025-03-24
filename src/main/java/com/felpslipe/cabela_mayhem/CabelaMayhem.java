@@ -93,6 +93,11 @@ public class CabelaMayhem {
             event.accept(ModItems.CABELA_HEAD);
             event.accept(ModItems.CABELA_CRY_HEAD);
             event.accept(ModBlocks.CABELA_TROPHY);
+            event.accept(ModBlocks.CABELA_CRY_TROPHY);
+            event.accept(ModBlocks.TROPHY);
+        }
+        if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModItems.FRANGO_SEEDS.get());
         }
 
     }

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cabela_cry_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cabela_mayhem:cabela_cry_head"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cabela_mayhem:cabela_cry_trophy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_trophy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cabela_mayhem:trophy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_trophy",
+      "has_cabela_cry_head"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cabela_mayhem:cabela_cry_trophy"
+    ]
+  }
+}

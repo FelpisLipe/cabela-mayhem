@@ -31,6 +31,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.CABELA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         skullItem(ModItems.CABELA_HEAD);
         skullItem(ModItems.CABELA_CRY_HEAD);
+        basicItem(ModItems.FRANGO_SEEDS.get());
     }
 
 

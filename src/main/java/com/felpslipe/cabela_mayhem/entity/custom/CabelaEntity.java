@@ -6,12 +6,14 @@ import com.felpslipe.cabela_mayhem.entity.ModEntities;
 import com.felpslipe.cabela_mayhem.item.ModItems;
 import com.felpslipe.cabela_mayhem.sound.ModSounds;
 import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -21,8 +23,11 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
 public class CabelaEntity extends Animal {
@@ -54,6 +59,7 @@ public class CabelaEntity extends Animal {
                 .add(Attributes.FOLLOW_RANGE, 24d);
     }
 
+
     @Override
     public boolean isFood(ItemStack stack) {
         return stack.is(ModItems.FRANGO);
@@ -72,7 +78,7 @@ public class CabelaEntity extends Animal {
         float parent2Health = this.getHealth();
         float averageHealth = (parent1Health + parent2Health) / 2.0f;
         CabelaEntity baby = ModEntities.CABELA.get().create(level);
-        if(averageHealth <= 5.0f) {
+        if(averageHealth <= 5.0f || (((CabelaEntity) otherParent).getVariant() == CabelaVariant.CRY && this.getVariant() == CabelaVariant.CRY)) {
             CabelaVariant variant = CabelaVariant.CRY;
             baby.setVariant(variant);
             return baby;

@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
+		"0": "cabela_mayhem:block/trophy",
 		"particle": "minecraft:block/gold_block"
 	},
 	"elements": [

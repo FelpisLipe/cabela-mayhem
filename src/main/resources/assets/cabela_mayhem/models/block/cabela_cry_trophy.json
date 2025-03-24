@@ -1,0 +1,7 @@
+{
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "cabela_mayhem:block/cabela_cry_trophy"
+	},
+	"parent": "cabela_mayhem:block/trophy"
+}

@@ -5,6 +5,7 @@ import com.felpslipe.cabela_mayhem.block.ModBlocks;
 import com.felpslipe.cabela_mayhem.entity.ModEntities;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.neoforged.bus.api.IEventBus;
@@ -27,6 +28,8 @@ public class ModItems {
     public static final DeferredItem<Item> CABELA_CRY_HEAD = ITEMS.register("cabela_cry_head",
             () -> new StandingAndWallBlockItem(ModBlocks.CABELA_CRY_HEAD.get(), ModBlocks.CABELA_CRY_WALL_HEAD.get(),
                     new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
+    public static final DeferredItem<Item> FRANGO_SEEDS = ITEMS.register("frango_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.FRANGO_CROP.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

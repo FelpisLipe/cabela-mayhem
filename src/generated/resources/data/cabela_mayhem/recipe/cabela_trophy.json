@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cabela_mayhem:trophy"
+    },
+    {
+      "item": "cabela_mayhem:cabela_head"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cabela_mayhem:cabela_trophy"
+  }
+}
