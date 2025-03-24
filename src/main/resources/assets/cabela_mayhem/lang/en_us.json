@@ -1,12 +1,17 @@
 {
   "item.cabela_mayhem.frango": "Frango",
   "item.cabela_mayhem.cabela_spawn_egg": "Cabela Spawn Egg",
+  "item.cabela_mayhem.frango_seeds": "Frango seeds",
 
   "sounds.cabela_mayhem.cabela_ambient": "Cabela cabela's",
   "sounds.cabela_mayhem.cabela_hurt": "Cabela hurts",
   "sounds.cabela_mayhem.cabela_death": "Cabela dies",
+
   "block.cabela_mayhem.cabela_head": "Cabela Head",
   "block.cabela_mayhem.cabela_cry_head": "Cabela Cry Head",
+  "block.cabela_mayhem.trophy": "Trophy",
+  "block.cabela_mayhem.cabela_trophy": "Cabela Trophy",
+  "block.cabela_mayhem.cabela_cry_trophy": "Cry Trophy",
 
   "entity.cabela_mayhem.cabela": "Cabela"
 }
